@@ -1,0 +1,27 @@
+version: '3.7'
+services:
+  ping-service:
+    container_name: ping_service
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: ping_service
+    environment:
+      API_PORT: 3007
+      PING_GRPC_SERVER_URL: 172.40.0.8
+      PONG_GRPC_SERVER_URL: 172.40.0.6
+    ports:
+      - "3007:3007"
+    command: npm run nest:start
+    networks:
+      ping_pong_network:
+        ipv4_address: 172.40.0.8
+    restart: unless-stopped
+
+networks:
+  ping_pong_network:
+    driver: bridge
+    name: ping_pong_network
+    ipam:
+      config:
+        - subnet: 172.40.0.0/16

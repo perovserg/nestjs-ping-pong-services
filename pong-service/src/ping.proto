@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package ping;
+
+service PingController {
+  rpc Ping (Repeats) returns (Response);
+}
+
+message Repeats {
+  int32 repeats = 1;
+}
+
+message Response {
+  int32 repeats = 1;
+  string message = 2;
+}
