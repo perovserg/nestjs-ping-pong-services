@@ -1,6 +1,5 @@
-- npm run docker:up => to start dockerized app
-- npm run docker:down => to stop dockerized app
+- npm run docker:up => to start dockerized service
 
-- npm i && nest start => to start locally
+- npm i && nest start => to start service locally
 
-- to start call POST localhost:3005/start with body { repeats: someNumber }
+- to start exchange => call POST localhost:3005/start with body { repeats: someNumber }
